@@ -25,6 +25,11 @@ class LivePlanner:
   answer=json.loads(raw)["choices"][0]["message"]["content"].strip()
   return json.loads(answer)
 
+class ExternalDecisionPlanner:
+ """Use the calling ChatGPT or another MCP host as the planner."""
+ def __init__(self,decision):self.decision=decision
+ def choose(self,context):return self.decision
+
 class FixturePlanner:
  def __init__(self,decisions):self.decisions=iter(decisions)
  def choose(self,context):return next(self.decisions)
