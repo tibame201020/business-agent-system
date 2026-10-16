@@ -1,0 +1,32 @@
+{
+  "costs": {
+    "source": null,
+    "verified_twd": 0
+  },
+  "current_offer": null,
+  "discovered": {},
+  "events": [
+    {
+      "at": "2026-10-16T06:11:36.538557+00:00",
+      "key": "planner:977015b221c664c79dda",
+      "kind": "planner_blocked",
+      "receipt": "4992cca18b5d7e96fc41",
+      "seq": 1,
+      "summary": {
+        "detail": "model_non_json_response",
+        "reason": "RuntimeError"
+      }
+    }
+  ],
+  "goal": "Find, validate, build and operate small, self-service digital businesses; maximize verified net profit, not output count.",
+  "inspected": {},
+  "last_result": null,
+  "offers": {},
+  "pending": {},
+  "revenue": {
+    "source": null,
+    "verified_twd": 0
+  },
+  "schema": "business-agent.v1",
+  "stage": "new"
+}
