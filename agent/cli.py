@@ -19,7 +19,7 @@ def main():
  else:model=LivePlanner();steps=min(max(a.max_steps,1),5)
  agent=Controller(store,model,BusinessPorts())
  for i in range(steps):
-  try:print(json.dumps(agent.tick(),ensure_ascii=False))
+  try:print(json.dumps(agent.tick(),ensure_ascii=True))
   except Blocked as e:print(json.dumps({"status":"BLOCKED","reason":str(e),"last_event":store.state["events"][-1] if store.state["events"] else None,"stage":store.state["stage"]}));return 3
  return 0
 if __name__=="__main__":sys.exit(main())

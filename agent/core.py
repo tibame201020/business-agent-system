@@ -8,7 +8,7 @@ STAGES={
  "new":{"discover"},"discovered":{"inspect","discover"},
  "inspected":{"propose","inspect","discover"},
  "proposed":{"evaluate"},"evaluated":{"queue_build","discover"},
- "queued":{"audit_asset","discover"},"audited":{"discover","audit_asset"},
+ "queued":{"build_product","audit_asset","discover"},"built":{"publish_product"},"published":{"measure_product","audit_asset"},"measured":{"discover","measure_product"},"audited":{"discover","audit_asset"},
  "rejected":{"discover"}
 }
 class Blocked(Exception): pass

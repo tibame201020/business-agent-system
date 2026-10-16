@@ -66,4 +66,11 @@ class BusinessTest(unittest.TestCase):
  def test_no_unverified_revenue_claim(self):
   self.assertEqual(self.store.state["revenue"],{"verified_twd":0,"source":None})
 
+ def test_builder_and_publisher_cannot_skip_quality_gate(self):
+  s=self.store.state
+  with self.assertRaises(ValueError):self.ports.build_product(s,"fake","ci_flake_audit")
+  with self.assertRaises(ValueError):self.ports.publish_product(s,"fake")
+ def test_asset_audit_rejects_non_owner_url(self):
+  with self.assertRaises(ValueError):self.ports.audit_asset(self.store.state,"https://example.com/private")
+
 if __name__=="__main__":unittest.main()

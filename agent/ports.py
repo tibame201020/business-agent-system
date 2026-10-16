@@ -1,4 +1,5 @@
-import os,re,json,urllib.parse,urllib.request,urllib.error,datetime
+import os,re,json,urllib.parse,urllib.request,urllib.error,datetime,hashlib,shutil,subprocess,sys,zipfile,io
+from pathlib import Path
 from .core import digest
 
 def get_json(url,token=None):
@@ -15,7 +16,7 @@ class BusinessPorts:
  def gh(self,path):return self.fetch("https://api.github.com/"+path.lstrip("/"),self.token)
  def discover(self,s,query):
   if not isinstance(query,str) or not re.fullmatch(r"[\w\u4e00-\u9fff +.:-]{3,90}",query):raise ValueError("invalid bounded public query")
-  q=query+" is:issue is:open archived:false"
+  q=query+" in:title comments:>=2 is:issue is:open archived:false"
   data=self.gh("search/issues?"+urllib.parse.urlencode({"q":q,"per_page":8,"sort":"comments","order":"desc"}));items=[]
   for x in data.get("items",[]):
    u=x.get("html_url","")
@@ -74,6 +75,69 @@ class BusinessPorts:
   o["build_issue_url"]=found["html_url"];o["status"]="queued_for_build"
   s["pending"][offer_id]={"type":"build_experiment","issue_url":found["html_url"],"MVP":"NOT_BUILT","revenue":"NOT_VERIFIED"}
   return {"stage":"queued","receipt":"build_queue:"+digest(found["html_url"]),"observation":{"offer_id":offer_id,"url":found["html_url"],"status":"QUEUED_NOT_BUILT"}}
+ def build_product(self,s,offer_id,capability):
+  o=s["offers"].get(offer_id)
+  if not o or offer_id!=s["current_offer"] or o.get("status")!="queued_for_build":raise ValueError("only a queued, reviewed offer may build")
+  if capability!="ci_flake_audit" or "CI" not in (o["title"]+o["deliverable"]):raise ValueError("no registered builder for this offer")
+  root=Path(__file__).resolve().parents[1]
+  source=root/"templates"/capability
+  if not source.is_dir():raise ValueError("builder capability source unavailable")
+  target=root/"runtime"/"public"/"products"/offer_id
+  manifest={}
+  for rel in ["flake_audit.py","README.md","tests/test_flake_audit.py"]:
+   p=source/rel;manifest[rel]=hashlib.sha256(p.read_bytes()).hexdigest()
+  if target.exists():
+   for rel,sha in manifest.items():
+    if not (target/rel).exists() or hashlib.sha256((target/rel).read_bytes()).hexdigest()!=sha:raise ValueError("previous generated product drift; no destructive replacement")
+  else:shutil.copytree(source,target,ignore=shutil.ignore_patterns("__pycache__","*.pyc"))
+  env={k:v for k,v in os.environ.items() if not any(x in k.upper() for x in ["TOKEN","SECRET","PASSWORD","KEY"])}
+  test=subprocess.run([sys.executable,"-m","unittest","discover","-s","tests","-v"],cwd=target,env=env,capture_output=True,text=True,timeout=25)
+  if test.returncode:raise ValueError("builder verification failed: "+(test.stderr or test.stdout)[-500:])
+  o["product"]={"capability":capability,"path":str(target.relative_to(root)).replace("\\","/"),"verified_manifest":manifest,"tests":"PASS","distribution":"NOT_PUBLISHED"}
+  o["status"]="built_verified"
+  s["pending"][offer_id]["MVP"]="VERIFIED_BUILT"
+  return {"stage":"built","receipt":"build:"+digest(o["product"]),"observation":{"offer_id":offer_id,"path":o["product"]["path"],"tests":"PASS","source":"REGISTERED_AUDITED_BUILDER","revenue":"NOT_VERIFIED"}}
+ def publish_product(self,s,offer_id):
+  o=s["offers"].get(offer_id)
+  if not o or offer_id!=s["current_offer"] or o.get("status")!="built_verified":raise ValueError("verified build required")
+  if not self.token:raise ValueError("owner-repo release requires scoped token")
+  root=Path(__file__).resolve().parents[1];folder=root/o["product"]["path"];tag="product-"+offer_id+"-v0.1"
+  url="https://api.github.com/repos/"+self.repo+"/releases/tags/"+tag
+  try:release=self.fetch(url,self.token)
+  except ValueError as e:
+   if str(e)!="github_http_404":raise
+   body={"tag_name":tag,"target_commitish":"main","name":o["title"][:130]+" — public beta","body":"Evidence-backed public beta, NOT a paid or proven-income product.\\n\\nSources:\\n" + "\\n".join(o["source_urls"]) + "\\n\\nUsage in attached README. No verified purchases.", "draft":False,"prerelease":True}
+   data=json.dumps(body).encode()
+   req=urllib.request.Request("https://api.github.com/repos/"+self.repo+"/releases",data=data,headers={"Authorization":"Bearer "+self.token,"Accept":"application/vnd.github+json","Content-Type":"application/json","User-Agent":"BusinessAgent/0.1"},method="POST")
+   try:
+    with urllib.request.urlopen(req,timeout=15) as r:release=json.load(r)
+   except urllib.error.HTTPError as e:raise ValueError("release_post_http_"+str(e.code)) from None
+  filename=offer_id+"-ci-flake-audit.zip"
+  assets=release.get("assets",[])
+  asset=next((x for x in assets if x["name"]==filename),None)
+  if not asset:
+   buf=io.BytesIO()
+   with zipfile.ZipFile(buf,"w",zipfile.ZIP_DEFLATED) as z:
+    for rel in o["product"]["verified_manifest"]:
+     z.write(folder/rel,"ci-flake-audit/"+rel)
+   archive=buf.getvalue()
+   upload_url=release["upload_url"].split("{",1)[0]+"?"+urllib.parse.urlencode({"name":filename})
+   req=urllib.request.Request(upload_url,data=archive,headers={"Authorization":"Bearer "+self.token,"Accept":"application/vnd.github+json","Content-Type":"application/zip","User-Agent":"BusinessAgent/0.1"},method="POST")
+   try:
+    with urllib.request.urlopen(req,timeout=25) as r:asset=json.load(r)
+   except urllib.error.HTTPError as e:raise ValueError("release_asset_http_"+str(e.code)) from None
+  o["status"]="published_beta";o["product"]["distribution"]=release["html_url"];o["product"]["asset_url"]=asset["browser_download_url"];o["product"]["release_tag"]=tag
+  s["pending"][offer_id]["MVP"]="PUBLISHED_BETA";s["pending"][offer_id]["distribution_url"]=asset["browser_download_url"]
+  return {"stage":"published","receipt":"release:"+digest({"tag":tag,"asset":asset["browser_download_url"]}),"observation":{"release":release["html_url"],"asset":asset["browser_download_url"],"downloads":asset.get("download_count",0),"verified_sales":"NONE_OBSERVED"}}
+ def measure_product(self,s,offer_id):
+  o=s["offers"].get(offer_id)
+  if not o or o.get("status")!="published_beta":raise ValueError("no published product")
+  r=self.fetch("https://api.github.com/repos/"+self.repo+"/releases/tags/"+o["product"]["release_tag"],self.token)
+  asset=next((x for x in r.get("assets",[]) if x.get("browser_download_url")==o["product"]["asset_url"]),None)
+  if not asset:raise ValueError("published asset absent")
+  measure={"download_count":asset.get("download_count",0),"observed_at":datetime.datetime.now(datetime.timezone.utc).isoformat(),"purchase_count":None,"gross_revenue_twd":None,"classification":"PLATFORM_DOWNLOAD_METRIC_NOT_PAYMENT_EVIDENCE"}
+  o["product"]["latest_measure"]=measure
+  return {"stage":"measured","receipt":"distribution_measure:"+digest(measure),"observation":measure}
  def audit_asset(self,s,url):
   if not isinstance(url,str) or not re.fullmatch(r"https://tibame201020.github.io/[a-zA-Z0-9/_-]+/?",url):raise ValueError("only owner's published sites")
   req=urllib.request.Request(url,headers={"User-Agent":"BusinessAgent/0.1"})

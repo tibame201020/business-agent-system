@@ -2,10 +2,11 @@
 import json,os,re,urllib.request,urllib.error
 class LivePlanner:
  def __init__(self,url=None,token=None,model=None):
-  self.url=url or os.getenv("BUSINESS_MODEL_URL","https://models.github.ai/inference/chat/completions")
+  self.url=url or os.getenv("BUSINESS_MODEL_URL")
   self.token=token or os.getenv("BUSINESS_MODEL_TOKEN") or os.getenv("GITHUB_TOKEN")
   self.model=model or os.getenv("BUSINESS_MODEL_NAME","openai/gpt-4o-mini")
  def choose(self,context):
+  if not self.url:raise RuntimeError("no verified model endpoint configured; use external ChatGPT planner or set BUSINESS_MODEL_URL")
   if not self.token:raise RuntimeError("no model credentials; no live autonomy")
   rule=("You manage an owner's legitimate, low-overhead digital business. Choose EXACTLY one action "
         "from allowed_tools, return ONLY JSON with exactly keys tool,args,reason. No Markdown. "
@@ -15,7 +16,10 @@ class LivePlanner:
         "inspect args: {ref:string} from discovered issue ref; "
         "propose args: {title,buyer,pain,deliverable,price_twd,source_refs:[ref],validation_metric}, "
         "evaluate args: {offer_id:string}, queue_build args: {offer_id:string}, "
-        "audit_asset args: {url:string} limited to owner's product URLs.")
+        "build_product args: {offer_id:string,capability:ci_flake_audit}; only registered builders, "
+        "publish_product args: {offer_id:string}, measure_product args: {offer_id:string}, "
+        "audit_asset args: {url:string} limited to owner's product URLs. "
+        "Do not infer revenue from public activity.")
   data=json.dumps({"model":self.model,"messages":[{"role":"system","content":rule},{"role":"user","content":json.dumps(context,ensure_ascii=False)}],"temperature":0.2,"max_tokens":900}).encode()
   req=urllib.request.Request(self.url,data=data,headers={"Authorization":"Bearer "+self.token,"Content-Type":"application/json","Accept":"application/json"})
   try:

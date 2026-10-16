@@ -3,8 +3,169 @@
     "source": null,
     "verified_twd": 0
   },
-  "current_offer": null,
-  "discovered": {},
+  "current_offer": "offer-2f73b78f0cd8229cab6d",
+  "discovered": {
+    "issue:07f84b4a38ead0a530a8": {
+      "api_url": "https://api.github.com/repos/ys2mm422yb-max/DungeonVeil/issues/376",
+      "comments": 2500,
+      "excerpt": "> [!IMPORTANT]\n> **Coordination continued in #481.** GitHub disabled new comments here after this issue reached 2,500 comments. #376 remains the immutable audit archive; all new leases, recovery notes and terminal handoffs must be written to #481. Workers must read both issues before any GitHub write.\n\n<!-- dungeon-veil-autopilot-control -->\n\n## Purpose\n\nThis issue is the durable coordination, queue, lease, recovery and handoff point for Dungeon ",
+      "ref": "issue:07f84b4a38ead0a530a8",
+      "repo": "ys2mm422yb-max/DungeonVeil",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "Autopilot control: durable queue, worker leases, recovery and repository maintenance",
+      "url": "https://github.com/ys2mm422yb-max/DungeonVeil/issues/376"
+    },
+    "issue:08ee29628d054415e789": {
+      "api_url": "https://api.github.com/repos/anyscale/ray/issues/567",
+      "comments": 62,
+      "excerpt": "CI test **linux://rllib:learning_tests_multi_agent_cartpole_ppo_multi_gpu** is flaky. Recent failures: \n\t- https://buildkite.com/ray-project/postmerge/builds/14644#019ac1fd-3f1a-4f49-9aaa-5196d803c402\n\t- https://buildkite.com/ray-project/postmerge/builds/14493#019a9d13-ccaa-4dbf-a122-da87d69f98c6\n\t- https://buildkite.com/ray-project/postmerge/builds/14476#019a9ab9-38a4-49e8-98bf-8e9c7fdaad4c\n\nDataCaseName-linux://rllib:learning_tests_multi_agent_",
+      "ref": "issue:08ee29628d054415e789",
+      "repo": "anyscale/ray",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "CI test linux://rllib:learning_tests_multi_agent_cartpole_ppo_multi_gpu is flaky",
+      "url": "https://github.com/anyscale/ray/issues/567"
+    },
+    "issue:1feed7cc13c2c1f974d8": {
+      "api_url": "https://api.github.com/repos/Oleksii-debug/scripture-archive/issues/78",
+      "comments": 2500,
+      "excerpt": "# CONTINUOUS COMPLETION CONTROL — AUTHORITATIVE COORDINATION\n\nThis issue is the live coordination surface for autonomous completion workers launched repeatedly (approximately every few minutes).\n\n## Sole optimization target\nMinimize `DISTANCE_TO_FINISHED_SCRIPTURE_ARCHIVE`.\n\n## Live-truth order\n1. current GitHub main/branches/PRs/Actions/issues;\n2. CURRENT_HANDOFF top authoritative block;\n3. Master Context / Technical Plan + Prompt A + Prompt B +",
+      "ref": "issue:1feed7cc13c2c1f974d8",
+      "repo": "Oleksii-debug/scripture-archive",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "CONTINUOUS COMPLETION CONTROL — Scripture Archive Final Product",
+      "url": "https://github.com/Oleksii-debug/scripture-archive/issues/78"
+    },
+    "issue:331e2f6fc6b1b4323276": {
+      "api_url": "https://api.github.com/repos/pyatkoff/poisk-turov-test/issues/3419",
+      "comments": 2500,
+      "excerpt": "<!-- coordination-rollover-4217 -->\n**Текущий канонический журнал — [#4217](https://github.com/pyatkoff/poisk-turov-test/issues/4217), с 01.10.2026, по подтверждённому поручению владельца.** #3419/#2530/#996 — история/no-replay. Новые claims, handoff, результаты и разрешённые команды направлять в #4217. Постоянные INT gates переключены через [#4220](https://github.com/pyatkoff/poisk-turov-test/pull/4220), SEARCH publishers/inspector/recovery — че",
+      "ref": "issue:331e2f6fc6b1b4323276",
+      "repo": "pyatkoff/poisk-turov-test",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "AnyTour development coordination — continuation of #2530",
+      "url": "https://github.com/pyatkoff/poisk-turov-test/issues/3419"
+    },
+    "issue:47dd788fdbba1a6fe68a": {
+      "api_url": "https://api.github.com/repos/Zion-support/zion-support.github.io/issues/71361",
+      "comments": 2500,
+      "excerpt": "- 2026-10-09 18:11 -03 | Worker | HEARTBEAT (comments locked at 2500 — logged on body)\n\n### 2026-10-09 18:11 -03 | Worker | HEARTBEAT\nCORE OFFLINE (>90 min after a named heartbeat): Grok last HEARTBEAT 2026-09-25 01:12 UTC; Harper 2026-09-17 16:40 -03; Lucas 2026-09-17 19:29 UTC. Benjamin: no named HEARTBEAT on #71361 (not flagged OFFLINE). Do not flag Carol/Kilo/Tablet.\nURLs: /apps/ 200 (GitHub.com, no Location to network.ziontechgroup.com); /ag",
+      "ref": "issue:47dd788fdbba1a6fe68a",
+      "repo": "Zion-support/zion-support.github.io",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "OPS COMMS — forever agent log (do not close)",
+      "url": "https://github.com/Zion-support/zion-support.github.io/issues/71361"
+    },
+    "issue:5312491ac3a0ed7c6140": {
+      "api_url": "https://api.github.com/repos/seungjae3908-source/seungjae20260713/issues/62",
+      "comments": 2500,
+      "excerpt": "> [!IMPORTANT]\n> **ROLLED OVER / ARCHIVE — 2026-08-24 KST**\n> Successor Central Hub: #660\n> Reason: #62 reached the 2,500-comment limit; new append-only commands/reports must not target #62.\n> Automatic workflow routing to #660 is prepared in Draft PR #662 and remains fail-closed until that PR receives separate merge approval and is merged.\n> Existing #62 body/comments below are preserved as audit history.\n\n> [!CAUTION]\n> **STALE WORKER / AUTOMAT",
+      "ref": "issue:5312491ac3a0ed7c6140",
+      "repo": "seungjae3908-source/seungjae20260713",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "[AGENT-HUB] 중앙 명령·완료 보고 허브",
+      "url": "https://github.com/seungjae3908-source/seungjae20260713/issues/62"
+    },
+    "issue:81531e252ce20244686f": {
+      "api_url": "https://api.github.com/repos/Oleksii-debug/Nika-Core/issues/553",
+      "comments": 2500,
+      "excerpt": "# NIKA — 13 developers + 2 coordinators\n\n> **LIVE COORDINATION TRANSPORT NOTICE — 2026-09-11:** Issue #553 has reached GitHub's 2,500-comment cap and GitHub now rejects new comments here. **#553 remains the canonical coordination root and policy surface.** New concise claims/handoffs/integration records that cannot be posted here go only to **Issue #803 — `#553 live coordination continuation — comment-cap overflow`**. #803 is transport-only, not ",
+      "ref": "issue:81531e252ce20244686f",
+      "repo": "Oleksii-debug/Nika-Core",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "Постійні воркери Nika Core — контроль, звіти та інтеграція",
+      "url": "https://github.com/Oleksii-debug/Nika-Core/issues/553"
+    },
+    "issue:88dcb9cfce30d11d4af4": {
+      "api_url": "https://api.github.com/repos/anyscale/ray/issues/690",
+      "comments": 82,
+      "excerpt": "CI test **linux://rllib:learning_tests_multi_agent_cartpole_ppo_multi_cpu** is flaky. Recent failures: \n\t- https://buildkite.com/ray-project/postmerge/builds/14985#019b2825-cd34-412f-aa2a-19a7cefb6ea7\n\t- https://buildkite.com/ray-project/postmerge/builds/14946#019b153e-9a0e-459a-96ac-af630e927e90\n\t- https://buildkite.com/ray-project/postmerge/builds/14909#019b0c07-63e8-451c-b8dc-3cc0d334ba0d\n\nDataCaseName-linux://rllib:learning_tests_multi_agent_",
+      "ref": "issue:88dcb9cfce30d11d4af4",
+      "repo": "anyscale/ray",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "CI test linux://python/ray/rllib:learning_tests_multi_agent_cartpole_ppo_multi_cpu is flaky",
+      "url": "https://github.com/anyscale/ray/issues/690"
+    },
+    "issue:8ea5f98203c4c64b27cd": {
+      "api_url": "https://api.github.com/repos/relativityE/speaksharp/issues/1258",
+      "comments": 2500,
+      "excerpt": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered jou",
+      "ref": "issue:8ea5f98203c4c64b27cd",
+      "repo": "relativityE/speaksharp",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "test(release): requalify both Production journeys after biopsy fixes",
+      "url": "https://github.com/relativityE/speaksharp/issues/1258"
+    },
+    "issue:a4b55d25a2265ea7ad31": {
+      "api_url": "https://api.github.com/repos/JiRaska/open-bank-oss/issues/5285",
+      "comments": 306,
+      "excerpt": "This issue is a running log, not something to action directly (#4878).\n\nEach comment below is one job that failed for a real reason (not a runner reclaim -- see auto-retry-cancelled.yml's `record-flake` job) and went green on a later attempt of the SAME run, with no source change in between. That is the definition of a flake this repo can act on.\n\nRead it back with `.github/scripts/list-recorded-flakes.py --issue <this-issue-number>`.\n\nDeciding w",
+      "ref": "issue:a4b55d25a2265ea7ad31",
+      "repo": "JiRaska/open-bank-oss",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "Flaky test observations (recorded from CI re-run evidence)",
+      "url": "https://github.com/JiRaska/open-bank-oss/issues/5285"
+    },
+    "issue:b580b3a3cdbf1274edec": {
+      "api_url": "https://api.github.com/repos/chimera-nas/chimera/issues/733",
+      "comments": 357,
+      "excerpt": "Rolling tracker for tests that needed a CI retry to pass. Each comment below is one observation from the merge queue.",
+      "ref": "issue:b580b3a3cdbf1274edec",
+      "repo": "chimera-nas/chimera",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "Flaky tests observed in CI",
+      "url": "https://github.com/chimera-nas/chimera/issues/733"
+    },
+    "issue:b93a7d49bbf2cff45735": {
+      "api_url": "https://api.github.com/repos/NVIDIA/cuvs/issues/2783",
+      "comments": 101,
+      "excerpt": "This issue coordinates a sweep of flaky CI test failures. Each workstream had a draft PR with a reduced CI matrix that repeated the failing job, so the flake could be reproduced in CI and the root cause found. Progress (reproducers, root causes, PR links, run links) is posted as comments here. The overall tracker is #2118.\n\n**Status (2026-10-14):** root-causing is done for every workstream. What remains is review and merge of the open fix PRs lis",
+      "ref": "issue:b93a7d49bbf2cff45735",
+      "repo": "NVIDIA/cuvs",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "[CI] Flaky test sweep (Sep–Oct 2026): root causes and fix PRs",
+      "url": "https://github.com/NVIDIA/cuvs/issues/2783"
+    },
+    "issue:bd5d13bf516b47013c8c": {
+      "api_url": "https://api.github.com/repos/anyscale/ray/issues/900",
+      "comments": 57,
+      "excerpt": "CI test **linux://rllib:learning_tests_appo_footsies_multi_gpu** is flaky. Recent failures: \n\t- https://buildkite.com/ray-project/postmerge/builds/16159#019c8b7c-93e0-44ec-a585-4bf8f6a2d5fd\n\t- https://buildkite.com/ray-project/postmerge/builds/16153#019c7ecf-2ef7-4c51-8afa-292616c429cd\n\nDataCaseName-linux://rllib:learning_tests_appo_footsies_multi_gpu-END\nManaged by OSS Test Policy",
+      "ref": "issue:bd5d13bf516b47013c8c",
+      "repo": "anyscale/ray",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "CI test linux://python/ray/rllib:learning_tests_appo_footsies_multi_gpu is flaky",
+      "url": "https://github.com/anyscale/ray/issues/900"
+    },
+    "issue:c27649b62d92665a2dd6": {
+      "api_url": "https://api.github.com/repos/andeplane/fuse-riders/issues/250",
+      "comments": 289,
+      "excerpt": "Epic for every flaky CI browser smoke. Policy: when a smoke assertion fails intermittently on unchanged code, note it here (what, where, runs) and remove the flaky assertion or case from CI so it stops blocking merges. Fix the underlying race in a follow-up, then restore the assertion and tick it off below.\n\nscripts/ci-smoke.sh also comments here whenever a browser smoke on main passes only on retry.\n\n## Removed from CI until fixed\n- [x] `scripts",
+      "ref": "issue:c27649b62d92665a2dd6",
+      "repo": "andeplane/fuse-riders",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "Epic: flaky CI browser smokes",
+      "url": "https://github.com/andeplane/fuse-riders/issues/250"
+    },
+    "issue:d601787687bd15898f2c": {
+      "api_url": "https://api.github.com/repos/sgl-project/sglang/issues/42752",
+      "comments": 83,
+      "excerpt": "[by Claude Code]\n\n<!-- sglang-flaky-tracker:v1 -->\n\nThis issue tracks **flaky tests** and **recurring CI infrastructure failures** seen in NVIDIA `PR Test Base` / `PR Test Extra` runs while babysitting PRs with the `/sglang-pr-babysit` Claude Code workflow. It complements the CI tracker #17050. #17050 lists every failure signature by date. This issue records one row per flaky test, how often it was hit, and whether a rerun with no code change pas",
+      "ref": "issue:d601787687bd15898f2c",
+      "repo": "sgl-project/sglang",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "[CI] Flaky tests and CI infrastructure failures seen while babysitting PRs",
+      "url": "https://github.com/sgl-project/sglang/issues/42752"
+    },
+    "issue:da13312a2011498a0dc2": {
+      "api_url": "https://api.github.com/repos/bingxche/sglang-ci-bot/issues/42",
+      "comments": 2500,
+      "excerpt": "<!-- ci-monitor-daily-status-board:start -->\n<!-- ci-monitor-daily-status-board -->\n# CI Daily Health — 2026-04-21\n**Snapshot**: 2026-04-21 23:40 UTC · Only completed runs counted · Auto-updated every 30 min\n\n## TL;DR\n🟡 YELLOW · 14 unique clusters · 2 NEW today (R16, R17) · 12 carrying over · 2 in-flight fix(es)\n👉 **Today's ask**: fix Docker build syntax error from [#23263](https://github.com/sgl-project/sglang/pull/23263) (R16, blocks ALL nightl",
+      "ref": "issue:da13312a2011498a0dc2",
+      "repo": "bingxche/sglang-ci-bot",
+      "source": "PUBLIC_ISSUE_NOT_PURCHASE_EVIDENCE",
+      "title": "[CI Monitor] Daily Report - 2026-04-21",
+      "url": "https://github.com/bingxche/sglang-ci-bot/issues/42"
+    }
+  },
   "events": [
     {
       "at": "2026-10-16T06:11:36.538557+00:00",
@@ -16,17 +177,199 @@
         "detail": "model_non_json_response",
         "reason": "RuntimeError"
       }
+    },
+    {
+      "at": "2026-10-16T06:12:09.004428+00:00",
+      "key": "4b89e395fff3d35e2aa7",
+      "kind": "tool_result",
+      "receipt": "f2cda097937e75125715",
+      "seq": 2,
+      "summary": {
+        "reason": "Find current independent first-party developer pain before selecting a product; public issue text is not purchase evidence.",
+        "receipt": "search:8c0fce501f5a76bd151b",
+        "stage": "discovered",
+        "tool": "discover"
+      }
+    },
+    {
+      "at": "2026-10-16T06:12:56.962353+00:00",
+      "key": "8b3dfc8a61e70ecfb0ae",
+      "kind": "tool_result",
+      "receipt": "079f9f97984ee26ba561",
+      "seq": 3,
+      "summary": {
+        "reason": "First discovery was dominated by unrelated high-comment automated issues. Narrow to issue titles and require discussion evidence before investing.",
+        "receipt": "search:725cb7d3e4fa97b5c03a",
+        "stage": "discovered",
+        "tool": "discover"
+      }
+    },
+    {
+      "at": "2026-10-16T06:13:07.557594+00:00",
+      "key": "52e99790b383b64caf73",
+      "kind": "tool_result",
+      "receipt": "f5c0bd88f0fbca354825",
+      "seq": 4,
+      "summary": {
+        "reason": "Inspect NVIDIA cuVS original issue; it describes CI flake reproduction methods with documented workstreams, avoiding second-hand market claims.",
+        "receipt": "inspect:8c57356c767b8f6e884d",
+        "stage": "inspected",
+        "tool": "inspect"
+      }
+    },
+    {
+      "at": "2026-10-16T06:13:16.157475+00:00",
+      "key": "93e465bbd6e0ab1ca539",
+      "kind": "tool_result",
+      "receipt": "ee55f0f243eb2eefb2e0",
+      "seq": 5,
+      "summary": {
+        "reason": "Get independent SGLang first-party flake data and check whether the problem repeats across organizations.",
+        "receipt": "inspect:7cc33aa917d32fe85d33",
+        "stage": "inspected",
+        "tool": "inspect"
+      }
+    },
+    {
+      "at": "2026-10-16T06:13:35.081170+00:00",
+      "key": "b707bb05031b5b15b259",
+      "kind": "tool_result",
+      "receipt": "a56c42201c0d2a1ac998",
+      "seq": 6,
+      "summary": {
+        "reason": "Two independent primary issues show recurring triage work; test a narrow evidence-based report without treating comments as purchases.",
+        "receipt": "offer-2f73b78f0cd8229cab6d",
+        "stage": "proposed",
+        "tool": "propose"
+      }
+    },
+    {
+      "at": "2026-10-16T06:13:43.311512+00:00",
+      "key": "c99665cc636621d46ede",
+      "kind": "tool_result",
+      "receipt": "e13ce314260f3acc51a7",
+      "seq": 7,
+      "summary": {
+        "reason": "Run the independent evidence and bounded experiment gate before dispatching product development; mark willingness-to-pay unverified.",
+        "receipt": "review:b23b288ce946502e0215",
+        "stage": "evaluated",
+        "tool": "evaluate"
+      }
+    },
+    {
+      "at": "2026-10-16T06:13:58.724724+00:00",
+      "key": "ce90864af7eea99d4789",
+      "kind": "tool_result",
+      "receipt": "ec6568c4461b0395f9ff",
+      "seq": 8,
+      "summary": {
+        "reason": "Primary-source gate passed; create one idempotently identified owner-repository build experiment with explicit no-sales claims.",
+        "receipt": "build_queue:78463d2f9e4f6d45c126",
+        "stage": "queued",
+        "tool": "queue_build"
+      }
+    },
+    {
+      "at": "2026-10-16T06:16:21.208645+00:00",
+      "key": "ff50a6743b3af6af7b4d",
+      "kind": "tool_result",
+      "receipt": "fe649667296d34c481e3",
+      "seq": 9,
+      "summary": {
+        "reason": "Invoke the registered audited CI-flake builder, run isolated tests and persist product files before publishing.",
+        "receipt": "build:e41a23f3820f472f98b2",
+        "stage": "built",
+        "tool": "build_product"
+      }
     }
   ],
   "goal": "Find, validate, build and operate small, self-service digital businesses; maximize verified net profit, not output count.",
-  "inspected": {},
-  "last_result": null,
-  "offers": {},
-  "pending": {},
+  "inspected": {
+    "issue:b93a7d49bbf2cff45735": {
+      "comments_count": 101,
+      "problem_statement": "This issue coordinates a sweep of flaky CI test failures. Each workstream had a draft PR with a reduced CI matrix that repeated the failing job, so the flake could be reproduced in CI and the root cause found. Progress (reproducers, root causes, PR links, run links) is posted as comments here. The overall tracker is #2118.\n\n**Status (2026-10-14):** root-causing is done for every workstream. What remains is review and merge of the open fix PRs listed under [Remaining](#remaining).\n\nData source: `pr.yaml` runs from 2026-09-05 to 2026-10-10 whose failed attempts later passed on a rerun, plus nightly `test.yaml` failures from 2026-09-26 to 2026-10-10.\n\n## Workstreams\n\n| # | Flaky failure | Hits (5 weeks) | Where | Issue | Repro PR | Fix PR / status |\n|---|---|---|---|---|---|---|\n| A | `CLUSTER_TEST` `SpectralClusteringTestF.Result/N` (eigensolver / label mismatch) | 17 | Almost always `12.2.2, arm64, ubuntu22.04, a100` | #2094, #1594 | #2788 (closed) | Open: #2794 and #2841 both fix this by changing the expanded-L2 clamp in `l2_exp.cuh`; only one should merge |\n| B | Python test hangs on H100: `cuvs` `test_cagra.py` stalls, then `cuvs_bench` `test_cli.py::test_run_command_creates_results` hangs (`CUVS_CAGRA_HNSWLIB_ANN_BENCH`) | 7 PR + nightly 6-hour timeouts | `h100` (oldest-deps rockylinux8, and nightly 12.9.2), once on `a100` | #2772, #2732 | #2784 (closed) | Open: #2829 |\n| C ",
+      "ref": "issue:b93a7d49bbf2cff45735",
+      "repo": "NVIDIA/cuvs",
+      "title": "[CI] Flaky test sweep (Sep–Oct 2026): root causes and fix PRs",
+      "type": "PUBLIC_REQUEST_NOT_VERIFIED_PAYMENT",
+      "url": "https://github.com/NVIDIA/cuvs/issues/2783"
+    },
+    "issue:d601787687bd15898f2c": {
+      "comments_count": 83,
+      "problem_statement": "[by Claude Code]\n\n<!-- sglang-flaky-tracker:v1 -->\n\nThis issue tracks **flaky tests** and **recurring CI infrastructure failures** seen in NVIDIA `PR Test Base` / `PR Test Extra` runs while babysitting PRs with the `/sglang-pr-babysit` Claude Code workflow. It complements the CI tracker #17050. #17050 lists every failure signature by date. This issue records one row per flaky test, how often it was hit, and whether a rerun with no code change passed. Use it to pick the flakiest tests to debug.\n\nA row is added only when triage found concrete evidence that the failure is **not caused by the PR** and **not a breakage on `main`**. PR-caused failures, `main` breakages, and uncertain cases are left out. Jobs that `github-actions[bot]` cancelled during a run of the maintainers' [Cancel Unfinished PR Runs](https://github.com/sgl-project/sglang/actions/workflows/cancel-unfinished-pr-tests.yml) workflow are also left out. Those are deliberate cancels, not flakes or infrastructure failures.\n\n## Flaky tests\n\n| ID | Test | Signature | Runner | Seen | Rerun passed | First seen | Last seen | Recent jobs | Status |\n|---|---|---|---|---|---|---|---|---|---|\n| T1 | `test/registered/lora/test_multi_lora_backend.py::TestMultiLoRABackend::test_ci_lora_models_multi_batch` | `AssertionError: ROUGE-L score <N> below tolerance 1.0` | `1-gpu-h100` | 9 | 6/9 | 2026-10-06 | 2026-10-08 | [#32947](https://g",
+      "ref": "issue:d601787687bd15898f2c",
+      "repo": "sgl-project/sglang",
+      "title": "[CI] Flaky tests and CI infrastructure failures seen while babysitting PRs",
+      "type": "PUBLIC_REQUEST_NOT_VERIFIED_PAYMENT",
+      "url": "https://github.com/sgl-project/sglang/issues/42752"
+    }
+  },
+  "last_result": {
+    "observation": {
+      "offer_id": "offer-2f73b78f0cd8229cab6d",
+      "path": "runtime/public/products/offer-2f73b78f0cd8229cab6d",
+      "revenue": "NOT_VERIFIED",
+      "source": "REGISTERED_AUDITED_BUILDER",
+      "tests": "PASS"
+    },
+    "receipt": "build:e41a23f3820f472f98b2",
+    "stage": "built",
+    "tool": "build_product"
+  },
+  "offers": {
+    "offer-2f73b78f0cd8229cab6d": {
+      "build_issue_url": "https://github.com/tibame201020/business-agent-system/issues/1",
+      "buyer": "Maintainers of matrix-heavy GitHub Actions repositories with expensive flaky jobs",
+      "deliverable": "Read-only CLI that groups GitHub Actions failure signatures, links original/rerun attempts, exports an auditable CSV and indicates uncertainty; no automatic reruns or repository writes.",
+      "id": "offer-2f73b78f0cd8229cab6d",
+      "pain": "Teams repeatedly inspect failing jobs and unchanged-code reruns to separate flaky failures from PR-caused regressions, consuming engineering and GPU runner capacity.",
+      "price_twd_hypothesis": 499,
+      "product": {
+        "capability": "ci_flake_audit",
+        "distribution": "NOT_PUBLISHED",
+        "path": "runtime/public/products/offer-2f73b78f0cd8229cab6d",
+        "tests": "PASS",
+        "verified_manifest": {
+          "README.md": "7d13e76a47ca7d05ad9ecd63e16ec3f8be51b55351ffb46cbcd2bee1f1f8450c",
+          "flake_audit.py": "2f1185a690ca802b046cf47d2643031362b1450811c30cd862b9234bf0b6ccbb",
+          "tests/test_flake_audit.py": "c444d7d52a9d01278b65aadb6849acfb6b318862fa2be4b0c9eb19dfdc6db441"
+        }
+      },
+      "review": {
+        "claim": "WILLINGNESS_TO_PAY_UNVERIFIED",
+        "reasons": [],
+        "sources": [
+          "https://github.com/NVIDIA/cuvs/issues/2783",
+          "https://github.com/sgl-project/sglang/issues/42752"
+        ],
+        "status": "experiment_ready"
+      },
+      "source_refs": [
+        "issue:b93a7d49bbf2cff45735",
+        "issue:d601787687bd15898f2c"
+      ],
+      "source_urls": [
+        "https://github.com/NVIDIA/cuvs/issues/2783",
+        "https://github.com/sgl-project/sglang/issues/42752"
+      ],
+      "status": "built_verified",
+      "title": "Evidence-based flaky CI triage report for GPU projects",
+      "validation_metric": "At least five unaffiliated repository trials and two explicit requests for a paid recurring report; record actual payments separately.",
+      "verified_revenue_twd": null
+    }
+  },
+  "pending": {
+    "offer-2f73b78f0cd8229cab6d": {
+      "MVP": "VERIFIED_BUILT",
+      "issue_url": "https://github.com/tibame201020/business-agent-system/issues/1",
+      "revenue": "NOT_VERIFIED",
+      "type": "build_experiment"
+    }
+  },
   "revenue": {
     "source": null,
     "verified_twd": 0
   },
   "schema": "business-agent.v1",
-  "stage": "new"
+  "stage": "built"
 }

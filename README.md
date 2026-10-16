@@ -1,16 +1,28 @@
-# Business Agent System v0.1
+# Business Agent System v0.2 — owner-operated autonomous business controller
 
-Goal: operate a repeatable digital-business discovery and execution portfolio on behalf of the owner. This repo is the AGENT runtime, not a storefront or a worksheet.
+This repository is the **Agent System**, not ProfitGuard TW or another one-off product page.
 
-Actual v0.1: model-driven decision per tick, scoped tool invocation, independent public-demand evidence collection, two-source offer gate, durable append-only operation receipts and restart-safe state, build-experiment dispatch to an owner repository issue, monitoring of owner-owned assets. A rejected or unavailable model must fail closed, never fall back to invented AI decisions.
+**Execution:** Model/Host decision (ChatGPT via Queqiao, or separately configured API provider) -> authorized stage-specific tool -> evidence/receipt -> persisted portfolio state -> next decision. Model output never bypasses source checks, registered builders, test gates or owner-only publication.
 
-Architecture: Controller -> Model Planner -> Tool contract -> Research/Inspection/Evaluation/Build Dispatch/Asset Audit -> Durable state -> Next tick. Provider interchangeable by env. GitHub Actions runner supplies a short-lived owner token scoped to models read, issues write and contents write. Only public business state is committed to the public repo. No buyer data or account secrets.
+## Implemented
+- Durable JSON state and append-only receipts, idempotent tool decisions, safe repeated reads, restart recovery.
+- Real public GitHub demand discovery and independent issue inspection; two inspected primary-source issues from different repositories required before an offer can advance.
+- Offer decision, price *hypothesis*, deterministic evidence gate, owner-owned GitHub build issue.
+- Builder registry: first fully tested plugin `ci_flake_audit`, which generates a downloadable Python CLI from a pinned reviewed implementation and reruns its tests without model-generated code execution. Add more builders as independent capabilities.
+- Product publication to a GitHub prerelease with ZIP attachment, idempotent asset reconciliation, and downloads-only measurement. Downloads are NOT sales.
+- Registered public owned asset HTTP monitoring, independent controller tests, GitHub Actions regression.
+- A host-driven planner mode (`--decision-file runtime/private/decision.json`) lets **ChatGPT itself** make decisions and Queqiao execute. No local LLM needed. Optional standalone API mode is disabled unless a verified BUSINESS_MODEL_URL is set.
 
-This is an actual controller and first bounded operation slice, not yet a finished income-producing company. Remaining commerce acceptance: an agent-built verified MVP, real distribution/acquisition, owner-authorized checkout and delivery, cost ledger and verified net revenue. Queueing a build Issue is explicitly NOT product completion.
+## Live first experiment
+Demand: NVIDIA/cuvs #2783 and sgl-project/sglang #42752 describe real recurring CI flake triage. Offer `offer-2f73b78f0cd8229cab6d` passed a source gate with willingness-to-pay marked UNVERIFIED. Owner issue #1 was created for a bounded experiment. The registered builder produced `runtime/public/products/offer-2f73b78f0cd8229cab6d`, passed its tests, and recorded hashes.
 
-Commands:
-- python -m unittest discover -s tests -v
-- python -m agent.cli status
-- python -m agent.cli tick --max-steps 3
+## Commands
+- `python -m unittest discover -s tests -v`
+- From `templates/ci_flake_audit`: `python -m unittest discover -s tests -v`
+- `python -m agent.cli status`
+- Host-driven: write one JSON `{ "tool": "...", "args": {}, "reason": "..." }` in the ignored private path, then `python -m agent.cli tick --decision-file runtime/private/decision.json`.
+- API-driven only after configuring `BUSINESS_MODEL_URL` and token: `python -m agent.cli tick --max-steps 1`.
 
-Live inference uses BUSINESS_MODEL_URL, BUSINESS_MODEL_NAME and BUSINESS_MODEL_TOKEN or Actions GITHUB_TOKEN. GitHub Models API availability is an empirical CI verification condition, not an assumed entitlement.
+See AGENTS.md for no-intervention owner operations. GitHub Actions performs push regression; optional hosted inference runs only if its endpoint is explicitly configured. The historical GitHub Models endpoint returned a non-JSON response in live CI and is not treated as available.
+
+**Not yet accepted as income producing:** real distribution/acquisition conversion, checkout and fulfillment integration, customer support, expense ledger with verified receipts, realized net profit. Never label an issue, product build, download or page view as a paid order.

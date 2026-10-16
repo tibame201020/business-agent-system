@@ -1,8 +1,8 @@
-name: Autonomous business controller
+name: Business agent acceptance and optional hosted planner
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
-  schedule:
-    - cron: '30 1 * * *'
 permissions:
   contents: write
   issues: write
@@ -11,7 +11,7 @@ concurrency:
   group: business-controller-state
   cancel-in-progress: false
 jobs:
-  tick:
+  verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
@@ -21,23 +21,30 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python -m unittest discover -s tests -v
-      - name: Live decision and real public source operations
+      - name: Agent regression
+        run: python -m unittest discover -s tests -v
+      - name: Registered builder regression
+        working-directory: templates/ci_flake_audit
+        run: python -m unittest discover -s tests -v
+      - name: Optional hosted model cycle (explicit verified endpoint only)
         id: agent
+        if: ${{ github.event_name == 'workflow_dispatch' && vars.BUSINESS_MODEL_URL != '' }}
         continue-on-error: true
         env:
+          BUSINESS_MODEL_URL: ${{ vars.BUSINESS_MODEL_URL }}
+          BUSINESS_MODEL_TOKEN: ${{ secrets.BUSINESS_MODEL_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: python -m agent.cli tick --max-steps 3
+        run: python -m agent.cli tick --max-steps 1
       - name: Persist public state including blocked receipts
         if: always()
         run: |
           git config user.name 'business-agent[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add runtime/public/state.json
+          git add runtime/public/state.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m 'agent: persist autonomous business operation receipts'
+            git commit -m 'agent: persist public business operation receipts'
             git push
           fi
-      - name: Propagate actual agent failure
+      - name: Propagate hosted planner failure
         if: steps.agent.outcome == 'failure'
         run: exit 1
