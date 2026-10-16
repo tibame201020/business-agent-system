@@ -14,7 +14,7 @@ This repository is the **Agent System**, not ProfitGuard TW or another one-off p
 - A host-driven planner mode (`--decision-file runtime/private/decision.json`) lets **ChatGPT itself** make decisions and Queqiao execute. No local LLM needed. Optional standalone API mode is disabled unless a verified BUSINESS_MODEL_URL is set.
 
 ## Live first experiment
-Demand: NVIDIA/cuvs #2783 and sgl-project/sglang #42752 describe real recurring CI flake triage. Offer `offer-2f73b78f0cd8229cab6d` passed a source gate with willingness-to-pay marked UNVERIFIED. Owner issue #1 was created for a bounded experiment. The registered builder produced `runtime/public/products/offer-2f73b78f0cd8229cab6d`, passed its tests, and recorded hashes.
+Demand: NVIDIA/cuvs #2783 and sgl-project/sglang #42752 describe real recurring CI flake triage. Offer `offer-2f73b78f0cd8229cab6d` passed a source gate with willingness-to-pay marked UNVERIFIED. Owner issue #1 was created for a bounded experiment. The registered builder produced `runtime/public/products/offer-2f73b78f0cd8229cab6d`, passed its tests, recorded hashes, published an owner-owned GitHub prerelease and verified the downloaded ZIP. The latest cycle is MEASURED; payment remains UNVERIFIED.
 
 ## Commands
 - `python -m unittest discover -s tests -v`

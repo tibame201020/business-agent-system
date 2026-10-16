@@ -10,8 +10,8 @@ One autonomous slice:
 3. Write ONE JSON decision to ignored `runtime/private/decision.json` with exactly `tool`, `args`, `reason`. Run `python -m agent.cli tick --decision-file runtime/private/decision.json` in repo through Queqiao.
 4. Read actual receipt and current state; inspect and repair errors. Do not silently skip a failed gate. Bound to <= 3 actual decisions per scheduled session.
 5. Run all controller, registered builder and generated product tests. Commit only code and `runtime/public` evidence; never commit `runtime/private`, cookies, credentials or buyer data. Push via already authorized owner GitHub account. Verify remote HEAD.
-6. Existing status `built` should advance to product release through `publish_product` only after the verified product files are on main. Release upload and asset must be read back from GitHub; measure downloads without claiming sales.
-7. Continue discovering new businesses after completed measurement, not by repeatedly minting unused product concepts.
+6. Existing state is `measured` for the first beta. Start a new bounded `discover` cycle, but do not neglect the published beta: monitor download/feedback evidence, decide whether to improve or retire with real measurements. For any new offer, move `built` to `publish_product` only after verified files are on main, then `measure_product`.
+7. Do not repeatedly mint concepts without building, distributing and measuring the current bounded experiment.
 
 Risk controls: owner repository writes and public GitHub observations are allowed. No unsolicited comments in third-party repositories, fake orders, fabricated reviews, real purchases or payment changes. Product revenue stays unverified until a genuine payment processor receipt exists; creator's identity is the owner, not an artificial separate AI identity.
 

@@ -281,6 +281,32 @@
         "stage": "built",
         "tool": "build_product"
       }
+    },
+    {
+      "at": "2026-10-16T06:19:54.251609+00:00",
+      "key": "47926bc2a6025845cec1",
+      "kind": "tool_result",
+      "receipt": "f520fcd9ed609ab18223",
+      "seq": 10,
+      "summary": {
+        "reason": "Builder and CI gates passed at f9dda94; publish only the validated downloadable public beta from the owner repository, with no sales claim.",
+        "receipt": "release:d8f0f5b5d90765321c55",
+        "stage": "published",
+        "tool": "publish_product"
+      }
+    },
+    {
+      "at": "2026-10-16T06:20:20.698165+00:00",
+      "key": "fd4d6c396fb3119e3ca9",
+      "kind": "tool_result",
+      "receipt": "5037b7ecdf70de12db77",
+      "seq": 11,
+      "summary": {
+        "reason": "Read GitHub Release asset metrics after independently verifying the actual downloaded ZIP; separate downloads from paid transactions.",
+        "receipt": "distribution_measure:908065b376ddce25cef5",
+        "stage": "measured",
+        "tool": "measure_product"
+      }
     }
   ],
   "goal": "Find, validate, build and operate small, self-service digital businesses; maximize verified net profit, not output count.",
@@ -306,15 +332,15 @@
   },
   "last_result": {
     "observation": {
-      "offer_id": "offer-2f73b78f0cd8229cab6d",
-      "path": "runtime/public/products/offer-2f73b78f0cd8229cab6d",
-      "revenue": "NOT_VERIFIED",
-      "source": "REGISTERED_AUDITED_BUILDER",
-      "tests": "PASS"
+      "classification": "PLATFORM_DOWNLOAD_METRIC_NOT_PAYMENT_EVIDENCE",
+      "download_count": 0,
+      "gross_revenue_twd": null,
+      "observed_at": "2026-10-16T06:20:20.698165+00:00",
+      "purchase_count": null
     },
-    "receipt": "build:e41a23f3820f472f98b2",
-    "stage": "built",
-    "tool": "build_product"
+    "receipt": "distribution_measure:908065b376ddce25cef5",
+    "stage": "measured",
+    "tool": "measure_product"
   },
   "offers": {
     "offer-2f73b78f0cd8229cab6d": {
@@ -325,9 +351,18 @@
       "pain": "Teams repeatedly inspect failing jobs and unchanged-code reruns to separate flaky failures from PR-caused regressions, consuming engineering and GPU runner capacity.",
       "price_twd_hypothesis": 499,
       "product": {
+        "asset_url": "https://github.com/tibame201020/business-agent-system/releases/download/product-offer-2f73b78f0cd8229cab6d-v0.1/offer-2f73b78f0cd8229cab6d-ci-flake-audit.zip",
         "capability": "ci_flake_audit",
-        "distribution": "NOT_PUBLISHED",
+        "distribution": "https://github.com/tibame201020/business-agent-system/releases/tag/product-offer-2f73b78f0cd8229cab6d-v0.1",
+        "latest_measure": {
+          "classification": "PLATFORM_DOWNLOAD_METRIC_NOT_PAYMENT_EVIDENCE",
+          "download_count": 0,
+          "gross_revenue_twd": null,
+          "observed_at": "2026-10-16T06:20:20.698165+00:00",
+          "purchase_count": null
+        },
         "path": "runtime/public/products/offer-2f73b78f0cd8229cab6d",
+        "release_tag": "product-offer-2f73b78f0cd8229cab6d-v0.1",
         "tests": "PASS",
         "verified_manifest": {
           "README.md": "7d13e76a47ca7d05ad9ecd63e16ec3f8be51b55351ffb46cbcd2bee1f1f8450c",
@@ -352,7 +387,7 @@
         "https://github.com/NVIDIA/cuvs/issues/2783",
         "https://github.com/sgl-project/sglang/issues/42752"
       ],
-      "status": "built_verified",
+      "status": "published_beta",
       "title": "Evidence-based flaky CI triage report for GPU projects",
       "validation_metric": "At least five unaffiliated repository trials and two explicit requests for a paid recurring report; record actual payments separately.",
       "verified_revenue_twd": null
@@ -360,7 +395,8 @@
   },
   "pending": {
     "offer-2f73b78f0cd8229cab6d": {
-      "MVP": "VERIFIED_BUILT",
+      "MVP": "PUBLISHED_BETA",
+      "distribution_url": "https://github.com/tibame201020/business-agent-system/releases/download/product-offer-2f73b78f0cd8229cab6d-v0.1/offer-2f73b78f0cd8229cab6d-ci-flake-audit.zip",
       "issue_url": "https://github.com/tibame201020/business-agent-system/issues/1",
       "revenue": "NOT_VERIFIED",
       "type": "build_experiment"
@@ -371,5 +407,5 @@
     "verified_twd": 0
   },
   "schema": "business-agent.v1",
-  "stage": "built"
+  "stage": "measured"
 }
